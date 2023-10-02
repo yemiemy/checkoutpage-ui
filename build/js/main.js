@@ -11,6 +11,12 @@ accordionHeader.addEventListener("click", () => {
   summaryHeader.innerHTML = `${isItemOpen ? "Show" : "Hide"} order summary`;
 });
 
+const infoForm = document.getElementById("info-form");
+infoForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  proceedToPayment();
+});
+
 function proceedToPayment() {
   // Hide contact stage
   document.getElementById("contact-stage").style.display = "none";
