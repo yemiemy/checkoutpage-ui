@@ -7,8 +7,8 @@
     <title>Checkout Page</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body>
-    <div class="bg-white">
+  <body onload="switchTheme()">
+    <div class="bg-white dark:bg-slate-800 dark:text-slate-100">
       <div class="pt-6">
         <nav aria-label="Breadcrumb" class="pb-5">
           <ol
@@ -32,7 +32,10 @@
                   <path d="m12 19-7-7 7-7" />
                   <path d="M19 12H5" />
                 </svg>
-                <a href="#" class="mr-2 text-sm font-medium text-gray-900 hover:text-purple-600"
+                <a
+                  href="#"
+                  class="mr-2 text-sm font-medium text-purple-600 hover:text-purple-300"
+                  id="info-tab"
                   >Information
                 </a>
                 <svg
@@ -51,7 +54,8 @@
               <a
                 href="#!"
                 aria-current="page"
-                class="font-medium text-gray-500 cursor-default"
+                class="font-medium text-gray-500"
+                id="payment-tab"
                 >Payment</a
               >
             </li>
@@ -59,8 +63,8 @@
         </nav>
 
         <!-- Order Summary -->
-        <div id="accordion-item" class="bg-gray-50 lg:hidden">
-          <div class="border-b border-t border-slate-300">
+        <div id="accordion-item" class="bg-gray-50 lg:hidden dark:bg-slate-700">
+          <div class="border-b border-t border-slate-300 dark:border-slate-500">
             <!-- Header -->
             <div
               class="mx-auto px-4 sm:px-6 max-w-2xl accordion-header py-5 items-center justify-between flex cursor-pointer"
@@ -109,7 +113,10 @@
           <div
             class="mx-auto px-4 sm:px-6 max-w-2xl accordion-content border-b border-slate-300"
           >
-            <ul role="list" class="divide-y divide-gray-300">
+            <ul
+              role="list"
+              class="divide-y divide-gray-300 dark:divide-gray-500"
+            >
               <li class="py-5">
                 <div class="flex justify-between">
                   <img
@@ -118,13 +125,15 @@
                     alt=""
                   />
                   <div class="min-w-0 ml-2">
-                    <p class="leading-6 text-gray-900">
+                    <p class="leading-6 text-gray-900 dark:text-slate-100">
                       Merino Mirage Hikers - Dusty Rose (Snowy Quartz Sole)
                     </p>
                     <p><b>Qty: </b>1</p>
                   </div>
                   <div class="ml-auto">
-                    <p class="leading-6 text-gray-900">$75</p>
+                    <p class="leading-6 text-gray-900 dark:text-slate-100">
+                      $75
+                    </p>
                   </div>
                 </div>
               </li>
@@ -136,14 +145,16 @@
                     alt=""
                   />
                   <div class="min-w-0 ml-2">
-                    <p class="leading-6 text-gray-900">
+                    <p class="leading-6 text-gray-900 dark:text-slate-100">
                       Women's Cashmere Trail Blazers - Rosy Taupe (Vanilla Cream
                       Sole)
                     </p>
                     <p><b>Qty: </b>1</p>
                   </div>
                   <div class="ml-auto">
-                    <p class="leading-6 text-gray-900">$125</p>
+                    <p class="leading-6 text-gray-900 dark:text-slate-100">
+                      $125
+                    </p>
                   </div>
                 </div>
               </li>
@@ -155,14 +166,16 @@
                     alt=""
                   />
                   <div class="min-w-0 ml-2">
-                    <p class="leading-6 text-gray-900">
+                    <p class="leading-6 text-gray-900 dark:text-slate-100">
                       Men's Wool Runner Mizzles - Hazy Indigo (Natural White
                       Sole)
                     </p>
                     <p><b>Qty: </b>1</p>
                   </div>
                   <div class="ml-auto">
-                    <p class="leading-6 text-gray-900">$50</p>
+                    <p class="leading-6 text-gray-900 dark:text-slate-100">
+                      $50
+                    </p>
                   </div>
                 </div>
               </li>
@@ -228,7 +241,10 @@
           class="mx-auto max-w-2xl px-4 pb-5 pt-5 sm:px-6 lg:pt-0 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:px-16 lg:grid-rows-[auto,auto,1fr]"
         >
           <!-- express checkout -->
-          <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+          <div
+            class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8 stage dark:border-0"
+          >
+            <div class="hidden stage" id="express-checkout">
               <button
                 type="button"
                 class="flex w-full items-center justify-center rounded-md border border-transparent bg-purple-600 px-8 py-3 text-base font-medium text-white hover:bg-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
@@ -240,14 +256,20 @@
                 />
                 Pay
               </button>
-            <div
-              class="text-center pb-5 pt-5 alternative-payment-separator gap-x-2"
-            >
-              <span class="text-sm"> Or pay with card </span>
+              <div
+                class="text-center pb-5 pt-5 alternative-payment-separator gap-x-2"
+              >
+                <span class="text-sm dark:text-slate-300">
+                  Or pay with card
+                </span>
+              </div>
             </div>
           </div>
 
-          <div class="hidden lg:block lg:bg-gray-50 lg:row-span-3 pl-8 pr-8">
+          <!-- order summary -->
+          <div
+            class="hidden lg:block lg:bg-gray-50 lg:row-span-3 pl-8 pr-8 dark:bg-slate-700 dark:rounded-md dark:shadow-3xl"
+          >
             <!-- List of products in the cart -->
             <div class="">
               <ul role="list" class="divide-y divide-gray-300">
@@ -259,13 +281,15 @@
                       alt=""
                     />
                     <div class="min-w-0 ml-2">
-                      <p class="leading-6 text-gray-900">
+                      <p class="leading-6 text-gray-900 dark:text-slate-300">
                         Merino Mirage Hikers - Dusty Rose (Snowy Quartz Sole)
                       </p>
-                      <p><b>Qty: </b>1</p>
+                      <p><b class="dark:text-slate-300">Qty: </b>1</p>
                     </div>
                     <div class="ml-auto">
-                      <p class="leading-6 text-gray-900">$75</p>
+                      <p class="leading-6 text-gray-900 dark:text-slate-300">
+                        $75
+                      </p>
                     </div>
                   </div>
                 </li>
@@ -277,14 +301,16 @@
                       alt=""
                     />
                     <div class="min-w-0 ml-2">
-                      <p class="leading-6 text-gray-900">
+                      <p class="leading-6 text-gray-900 dark:text-slate-300">
                         Women's Cashmere Trail Blazers - Rosy Taupe (Vanilla
                         Cream Sole)
                       </p>
-                      <p><b>Qty: </b>1</p>
+                      <p><b class="dark:text-slate-300">Qty: </b>1</p>
                     </div>
                     <div class="ml-auto">
-                      <p class="leading-6 text-gray-900">$125</p>
+                      <p class="leading-6 text-gray-900 dark:text-slate-300">
+                        $125
+                      </p>
                     </div>
                   </div>
                 </li>
@@ -296,14 +322,16 @@
                       alt=""
                     />
                     <div class="min-w-0 ml-2">
-                      <p class="leading-6 text-gray-900">
+                      <p class="leading-6 text-gray-900 dark:text-slate-300">
                         Men's Wool Runner Mizzles - Hazy Indigo (Natural White
                         Sole)
                       </p>
-                      <p><b>Qty: </b>1</p>
+                      <p><b class="dark:text-slate-300">Qty: </b>1</p>
                     </div>
                     <div class="ml-auto">
-                      <p class="leading-6 text-gray-900">$50</p>
+                      <p class="leading-6 text-gray-900 dark:text-slate-300">
+                        $50
+                      </p>
                     </div>
                   </div>
                 </li>
@@ -317,7 +345,7 @@
                     name="discount_code"
                     id="discount_code"
                     placeholder="Gift card or discount code"
-                    class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-purple-100 focus:ring-2 focus:ring-inset focus:ring-purple-300 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-purple-100 focus:ring-2 focus:ring-inset focus:ring-purple-300 sm:text-sm sm:leading-6 dark:bg-transparent"
                   />
                   <button
                     type="button"
@@ -343,7 +371,7 @@
               </div>
 
               <!-- Shipping and Cost Summary -->
-              <div class="border-t border-t-slate-300 py-5">
+              <div class="border-t border-t-slate-300 py-5 dark:text-slate-300">
                 <div class="justify-between flex">
                   Subtotal
                   <span class="ml-auto">$250</span>
@@ -355,7 +383,7 @@
               </div>
 
               <!-- Shipping and Cost Summary -->
-              <div class="border-t border-t-slate-300 py-5">
+              <div class="border-t border-t-slate-300 py-5 dark:text-slate-300">
                 <div class="justify-between flex">
                   Total
                   <span class="ml-auto text-xl">$250</span>
@@ -364,198 +392,246 @@
             </div>
           </div>
 
-          <form class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-            <!-- Contact Information -->
-            <div class="">
-              <h2
-                class="text-xl font-medium tracking-tight text-gray-900 sm:text-2xl"
-              >
-                Contact information
-              </h2>
+          <!-- Billing info -->
+          <div
+            class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8 dark:border-0"
+          >
+            <form>
+              <div id="contact-stage" class="stage">
+                <!-- Contact Information -->
+                <div class="">
+                  <h2
+                    class="text-xl font-medium tracking-tight text-gray-900 sm:text-2xl dark:text-slate-100"
+                  >
+                    Contact information
+                  </h2>
 
-              <!-- Email form -->
-              <div class="py-5 border-b border-b-slate-300">
-                <div class="grid grid-cols-1 gap-4">
-                  <!-- Email -->
-                  <div class="">
-                    <label
-                      for="email"
-                      class="text-sm font-medium leading-6 text-gray-600"
+                  <!-- Email form -->
+                  <div class="py-5 border-b border-b-slate-300">
+                    <div class="grid grid-cols-1 gap-4">
+                      <!-- Email -->
+                      <div class="">
+                        <label
+                          for="email"
+                          class="text-sm font-medium leading-6 text-gray-600 dark:text-slate-300"
+                        >
+                          Email address
+                        </label>
+                        <input
+                          type="email"
+                          id="email"
+                          name="email"
+                          class="block w-full rounded-md border-0 py-2 px-3 shadow-sm text-gray-900 focus:ring-2 focus:ring-inset focus:ring-purple-300 ring-1 ring-inset ring-purple-100 dark:text-slate-300 dark:bg-transparent"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Shipping Information -->
+                <div class="pt-5">
+                  <h1
+                    class="text-xl font-medium tracking-tight text-gray-900 sm:text-2xl dark:text-slate-100"
+                  >
+                    Shipping information
+                  </h1>
+
+                  <!-- Address form -->
+                  <div class="pt-5">
+                    <div class="grid grid-cols-1 gap-4">
+                      <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <!-- first name -->
+                        <div class="">
+                          <label
+                            class="text-sm font-medium leading-6 text-gray-600 dark:text-slate-300"
+                          >
+                            First name
+                          </label>
+                          <input
+                            type="text"
+                            id="f_name"
+                            name="f_name"
+                            class="block w-full rounded-md border-0 py-2 px-3 shadow-sm text-gray-900 focus:ring-2 focus:ring-inset focus:ring-purple-300 ring-1 ring-inset ring-purple-100 dark:text-slate-300 dark:bg-transparent dark:dark:text-slate-300"
+                            required
+                          />
+                        </div>
+                        <!-- last name -->
+                        <div class="">
+                          <label
+                            class="text-sm font-medium leading-6 text-gray-600 dark:text-slate-300"
+                          >
+                            Last name
+                          </label>
+                          <input
+                            type="text"
+                            id="last_name"
+                            name="last_name"
+                            class="block w-full rounded-md border-0 py-2 px-3 shadow-sm text-gray-900 focus:ring-2 focus:ring-inset focus:ring-purple-300 ring-1 ring-inset ring-purple-100 dark:text-slate-300 dark:bg-transparent"
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      <!-- address -->
+                      <div class="">
+                        <label
+                          class="text-sm font-medium leading-6 text-gray-600 dark:text-slate-300"
+                        >
+                          Address
+                        </label>
+                        <input
+                          type="text"
+                          id="address"
+                          name="address"
+                          class="block w-full rounded-md border-0 py-2 px-3 shadow-sm text-gray-900 focus:ring-2 focus:ring-inset focus:ring-purple-300 ring-1 ring-inset ring-purple-100 dark:text-slate-300 dark:bg-transparent"
+                          required
+                        />
+                      </div>
+                      <!-- address2 -->
+                      <div class="">
+                        <label
+                          class="text-sm font-medium leading-6 text-gray-600 dark:text-slate-300"
+                        >
+                          Address, suite, etc.
+                        </label>
+                        <input
+                          type="text"
+                          id="address_2"
+                          name="address_2"
+                          class="block w-full rounded-md border-0 py-2 px-3 shadow-sm text-gray-900 focus:ring-2 focus:ring-inset focus:ring-purple-300 ring-1 ring-inset ring-purple-100 dark:text-slate-300 dark:bg-transparent"
+                        />
+                      </div>
+
+                      <div class="">
+                        <label
+                          class="text-sm font-medium leading-6 text-gray-600 dark:text-slate-300"
+                        >
+                          Country
+                        </label>
+                        <div class="">
+                          <select
+                            id="country"
+                            name="country"
+                            class="block w-full rounded-md border-0 py-2 px-3 shadow-sm text-gray-900 focus:ring-2 focus:ring-inset focus:ring-purple-300 ring-1 ring-inset ring-purple-100 dark:text-slate-300 dark:bg-transparent"
+                            placeholder="Country"
+                          >
+                            <option>Nigeria</option>
+                            <option>Ghana</option>
+                            <option>Togo</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+                        <!-- city -->
+                        <div class="">
+                          <label
+                            class="text-sm font-medium leading-6 text-gray-600 dark:text-slate-300"
+                          >
+                            City
+                          </label>
+                          <input
+                            type="text"
+                            id="city"
+                            name="city"
+                            class="block w-full rounded-md border-0 py-2 px-3 shadow-sm text-gray-900 focus:ring-2 focus:ring-inset focus:ring-purple-300 ring-1 ring-inset ring-purple-100 dark:text-slate-300 dark:bg-transparent"
+                          />
+                        </div>
+                        <!-- state -->
+                        <div class="">
+                          <label
+                            class="text-sm font-medium leading-6 text-gray-600 dark:text-slate-300"
+                          >
+                            State / Province
+                          </label>
+                          <input
+                            type="text"
+                            id="state"
+                            name="state"
+                            class="block w-full rounded-md border-0 py-2 px-3 shadow-sm text-gray-900 focus:ring-2 focus:ring-inset focus:ring-purple-300 ring-1 ring-inset ring-purple-100 dark:text-slate-300 dark:bg-transparent"
+                          />
+                        </div>
+                        <!-- zip code -->
+                        <div class="">
+                          <label
+                            class="text-sm font-medium leading-6 text-gray-600 dark:text-slate-300"
+                          >
+                            Postal code
+                          </label>
+                          <input
+                            type="text"
+                            id="zip"
+                            name="zip"
+                            class="block w-full rounded-md border-0 py-2 px-3 shadow-sm text-gray-900 focus:ring-2 focus:ring-inset focus:ring-purple-300 ring-1 ring-inset ring-purple-100 dark:text-slate-300 dark:bg-transparent"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Buttons  -->
+                <div class="py-5">
+                  <div class="grid grid-cols-1 gap-1 lg:hidden">
+                    <button
+                      type="button"
+                      class="flex w-full items-center justify-center rounded-md border border-transparent bg-purple-600 px-8 py-3 text-base font-medium text-white hover:bg-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+                      onclick="proceedToPayment()"
                     >
-                      Email address
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      class="block w-full rounded-md border-0 py-2 px-3 shadow-sm text-gray-900 focus:ring-2 focus:ring-inset focus:ring-purple-300 ring-1 ring-inset ring-purple-100"
-                      required
-                    />
+                      Proceed to Payment
+                    </button>
+                    <button
+                      type="button"
+                      class="flex w-full items-center justify-center rounded-md border border-purple-600 bg-white dark:bg-transparent dark:text-slate-100 px-8 py-3 text-base font-medium text-black hover:bg-purple-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+
+                  <div class="hidden lg:grid lg:grid-cols-2 lg:gap-2">
+                    <button
+                      type="button"
+                      class="flex w-full items-center justify-center rounded-md border border-purple-600 bg-white dark:bg-transparent dark:text-slate-100 px-8 py-3 text-base font-medium text-black hover:bg-purple-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="button"
+                      class="flex w-full items-center justify-center rounded-md border border-transparent bg-purple-600 px-8 py-3 text-base font-medium text-white hover:bg-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+                      onclick="proceedToPayment()"
+                    >
+                      Proceed to Payment
+                    </button>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <!-- Shipping Information -->
-            <div class="pt-5">
-              <h1
-                class="text-xl font-medium tracking-tight text-gray-900 sm:text-2xl"
-              >
-                Shipping information
-              </h1>
-
-              <!-- Address form -->
-              <div class="py-5 border-b-[0.5px] border-b-slate-300">
-                <div class="grid grid-cols-1 gap-4">
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-                    <!-- first name -->
-                    <div class="">
-                      <label
-                        class="text-sm font-medium leading-6 text-gray-600"
-                      >
-                        First name
-                      </label>
-                      <input
-                        type="text"
-                        id="f_name"
-                        name="f_name"
-                        class="block w-full rounded-md border-0 py-2 px-3 shadow-sm text-gray-900 focus:ring-2 focus:ring-inset focus:ring-purple-300 ring-1 ring-inset ring-purple-100"
-                        required
-                      />
-                    </div>
-                    <!-- last name -->
-                    <div class="">
-                      <label
-                        class="text-sm font-medium leading-6 text-gray-600"
-                      >
-                        Last name
-                      </label>
-                      <input
-                        type="text"
-                        id="last_name"
-                        name="last_name"
-                        class="block w-full rounded-md border-0 py-2 px-3 shadow-sm text-gray-900 focus:ring-2 focus:ring-inset focus:ring-purple-300 ring-1 ring-inset ring-purple-100"
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <!-- address -->
-                  <div class="">
-                    <label class="text-sm font-medium leading-6 text-gray-600">
-                      Address
-                    </label>
-                    <input
-                      type="text"
-                      id="address"
-                      name="address"
-                      class="block w-full rounded-md border-0 py-2 px-3 shadow-sm text-gray-900 focus:ring-2 focus:ring-inset focus:ring-purple-300 ring-1 ring-inset ring-purple-100"
-                      required
-                    />
-                  </div>
-                  <!-- address2 -->
-                  <div class="">
-                    <label class="text-sm font-medium leading-6 text-gray-600">
-                      Address, suite, etc.
-                    </label>
-                    <input
-                      type="text"
-                      id="address_2"
-                      name="address_2"
-                      class="block w-full rounded-md border-0 py-2 px-3 shadow-sm text-gray-900 focus:ring-2 focus:ring-inset focus:ring-purple-300 ring-1 ring-inset ring-purple-100"
-                    />
-                  </div>
-
-                  <div class="">
-                    <label class="text-sm font-medium leading-6 text-gray-600">
-                      Country
-                    </label>
-                    <div class="">
-                      <select
-                        id="country"
-                        name="country"
-                        class="block w-full rounded-md border-0 py-2 px-3 shadow-sm text-gray-900 focus:ring-2 focus:ring-inset focus:ring-purple-300 ring-1 ring-inset ring-purple-100"
-                        placeholder="Country"
-                      >
-                        <option>Nigeria</option>
-                        <option>Ghana</option>
-                        <option>Togo</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
-                    <!-- city -->
-                    <div class="">
-                      <label
-                        class="text-sm font-medium leading-6 text-gray-600"
-                      >
-                        City
-                      </label>
-                      <input
-                        type="text"
-                        id="city"
-                        name="city"
-                        class="block w-full rounded-md border-0 py-2 px-3 shadow-sm text-gray-900 focus:ring-2 focus:ring-inset focus:ring-purple-300 ring-1 ring-inset ring-purple-100"
-                      />
-                    </div>
-                    <!-- state -->
-                    <div class="">
-                      <label
-                        class="text-sm font-medium leading-6 text-gray-600"
-                      >
-                        State / Province
-                      </label>
-                      <input
-                        type="text"
-                        id="state"
-                        name="state"
-                        class="block w-full rounded-md border-0 py-2 px-3 shadow-sm text-gray-900 focus:ring-2 focus:ring-inset focus:ring-purple-300 ring-1 ring-inset ring-purple-100"
-                      />
-                    </div>
-                    <!-- zip code -->
-                    <div class="">
-                      <label
-                        class="text-sm font-medium leading-6 text-gray-600"
-                      >
-                        Postal code
-                      </label>
-                      <input
-                        type="text"
-                        id="zip"
-                        name="zip"
-                        class="block w-full rounded-md border-0 py-2 px-3 shadow-sm text-gray-900 focus:ring-2 focus:ring-inset focus:ring-purple-300 ring-1 ring-inset ring-purple-100"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </form>
 
             <!-- Payment details -->
-            <div class="pt-5">
-              <h1
-                class="text-2xl font-semibold tracking-tight text-gray-600 sm:text-2xl"
-              >
-                Payment details
-              </h1>
+            <form>
+              <div class="stage hidden" id="payment-stage">
+                <h1
+                  class="text-2xl font-semibold tracking-tight text-gray-600 sm:text-2xl dark:text-slate-100"
+                >
+                  Payment details
+                </h1>
 
-              <!-- Address form -->
-              <div class="py-5">
-                <div class="grid grid-cols-1 gap-4">
+                <!-- Address form -->
+                <div class="py-5">
                   <!-- card number -->
                   <div class="">
                     <label
-                      for="email"
-                      class="text-sm font-medium leading-6 text-gray-600"
+                      for="card_number"
+                      class="text-sm font-medium leading-6 text-gray-600 dark:text-slate-300"
                     >
                       Card number
                     </label>
                     <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      class="block w-full rounded-md border-0 py-2 px-3 shadow-sm text-gray-900 focus:ring-2 focus:ring-inset focus:ring-purple-300 ring-1 ring-inset ring-purple-100"
+                      type="text"
+                      id="card_number"
+                      name="card_number"
+                      class="block w-full rounded-md border-0 py-2 px-3 shadow-sm text-gray-900 focus:ring-2 focus:ring-inset focus:ring-purple-300 ring-1 ring-inset ring-purple-100 dark:text-slate-300 dark:bg-transparent"
                       required
                     />
                   </div>
@@ -564,7 +640,7 @@
                   <div class="">
                     <label
                       for="name_on_card"
-                      class="text-sm font-medium leading-6 text-gray-600"
+                      class="text-sm font-medium leading-6 text-gray-600 dark:text-slate-300"
                     >
                       Name on card
                     </label>
@@ -572,7 +648,7 @@
                       type="text"
                       id="name_on_card"
                       name="name_on_card"
-                      class="block w-full rounded-md border-0 py-2 px-3 shadow-sm text-gray-900 focus:ring-2 focus:ring-inset focus:ring-purple-300 ring-1 ring-inset ring-purple-100"
+                      class="block w-full rounded-md border-0 py-2 px-3 shadow-sm text-gray-900 focus:ring-2 focus:ring-inset focus:ring-purple-300 ring-1 ring-inset ring-purple-100 dark:text-slate-300 dark:bg-transparent"
                       required
                     />
                   </div>
@@ -582,7 +658,7 @@
                     <div class="col-span-2">
                       <label
                         for="expiration_date"
-                        class="text-sm font-medium leading-6 text-gray-600"
+                        class="text-sm font-medium leading-6 text-gray-600 dark:text-slate-300"
                       >
                         Expiration date (MM/YY)
                       </label>
@@ -590,14 +666,14 @@
                         type="text"
                         id="expiration_date"
                         name="expiration_date"
-                        class="block w-full rounded-md border-0 py-2 px-3 shadow-sm text-gray-900 focus:ring-2 focus:ring-inset focus:ring-purple-300 ring-1 ring-inset ring-purple-100"
+                        class="block w-full rounded-md border-0 py-2 px-3 shadow-sm text-gray-900 focus:ring-2 focus:ring-inset focus:ring-purple-300 ring-1 ring-inset ring-purple-100 dark:text-slate-300 dark:bg-transparent"
                         required
                       />
                     </div>
                     <div class="">
                       <label
                         for="cvc"
-                        class="text-sm font-medium leading-6 text-gray-600"
+                        class="text-sm font-medium leading-6 text-gray-600 dark:text-slate-300"
                       >
                         CVC
                       </label>
@@ -605,52 +681,144 @@
                         type="text"
                         id="cvc"
                         name="cvc"
-                        class="block w-full rounded-md border-0 py-2 px-3 shadow-sm text-gray-900 focus:ring-2 focus:ring-inset focus:ring-purple-300 ring-1 ring-inset ring-purple-100"
+                        class="block w-full rounded-md border-0 py-2 px-3 shadow-sm text-gray-900 focus:ring-2 focus:ring-inset focus:ring-purple-300 ring-1 ring-inset ring-purple-100 dark:text-slate-300 dark:bg-transparent"
                         required
                       />
                     </div>
                   </div>
 
-                  <div class="flex gap-x-2">
+                  <div class="flex gap-x-2 mt-3">
                     <input
                       type="checkbox"
                       checked
                       name="same_billing_address"
                       id="same_billing_address"
+                      class="checked:bg-indigo-600 checked:text-lg checked:font-semibold checked:text-indigo-600"
                     />
                     <label
                       for="same_billing_address"
-                      class="text-sm font-medium leading-6 text-gray-600"
+                      class="text-sm font-medium leading-6 text-gray-600 dark:text-slate-300"
                       >Billing address is same as shipping</label
                     >
                   </div>
-                </div>
 
-                <div class="grid grid-cols-1 gap-1 mt-5 lg:grid-cols-2 lg:gap-2">
-                  <button
-                    type="submit"
-                    class="flex w-full items-center justify-center rounded-md border border-transparent bg-purple-600 px-8 py-3 text-base font-medium text-white hover:bg-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
-                  >
-                    Pay $250
-                  </button>
-                  <button
-                    type="button"
-                    class="flex w-full items-center justify-center rounded-md border border-purple-600 bg-white px-8 py-3 text-base font-medium text-black hover:bg-purple-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
-                  >
-                    Cancel
-                  </button>
+                  <!-- Buttons -->
+                  <div>
+                    <div class="hidden mt-5 lg:grid lg:grid-cols-2 lg:gap-2">
+                      <button
+                        type="button"
+                        class="flex w-full items-center justify-center rounded-md border border-purple-600 bg-white dark:bg-transparent dark:text-slate-100 px-8 py-3 text-base font-medium text-black hover:bg-purple-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+                        onclick="backToContactInfo()"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="20"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-arrow-left w-5 h-4"
+                        >
+                          <path d="m12 19-7-7 7-7" />
+                          <path d="M19 12H5" />
+                        </svg>
+                        Back
+                      </button>
+                      <button
+                        type="submit"
+                        class="flex w-full items-center justify-center rounded-md border border-transparent bg-purple-600 px-8 py-3 text-base font-medium text-white hover:bg-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+                      >
+                        Pay $250
+                      </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-1 mt-5 lg:hidden">
+                      <button
+                        type="submit"
+                        class="flex w-full items-center justify-center rounded-md border border-transparent bg-purple-600 px-8 py-3 text-base font-medium text-white hover:bg-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+                      >
+                        Pay $250
+                      </button>
+                      <button
+                        type="button"
+                        class="flex w-full items-center justify-center rounded-md border border-purple-600 bg-white dark:bg-transparent dark:text-slate-100 px-8 py-3 text-base font-medium text-black hover:bg-purple-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+                        onclick="backToContactInfo()"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="20"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-arrow-left w-5 h-4"
+                        >
+                          <path d="m12 19-7-7 7-7" />
+                          <path d="M19 12H5" />
+                        </svg>
+                        Back
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
 
           <div
-            class="col-span-2 lg:border-r lg:border-r-gray-200 lg:pr-8"
+            class="col-span-2 lg:border-r lg:border-r-gray-200 lg:pr-8 pb-8 dark:border-0"
           >
-            <div class="flex justify-between border-t border-t-slate-200 py-5 text-sm">
-              <a href="#" class="mr-1 md:mr-4 underline font-semibold hover:text-purple-600 hover:no-underline">Refund Policy</a>
-              <a href="#" class="mr-1 md:mr-4 underline font-semibold hover:text-purple-600 hover:no-underline">Privacy Policy</a>
-              <a href="#" class="mr-1 md:mr-4 underline font-semibold hover:text-purple-600 hover:no-underline">Terms of Service</a>
+            <div
+              class="flex justify-between border-t border-t-slate-200 py-5 text-sm"
+            >
+              <a
+                href="#"
+                class="mr-1 md:mr-4 underline font-semibold hover:text-purple-600 hover:no-underline"
+                >Refund Policy</a
+              >
+              <a
+                href="#"
+                class="mr-1 md:mr-4 underline font-semibold hover:text-purple-600 hover:no-underline"
+                >Privacy Policy</a
+              >
+              <a
+                href="#"
+                class="mr-1 md:mr-4 underline font-semibold hover:text-purple-600 hover:no-underline"
+                >Terms of Service</a
+              >
+            </div>
+            <div
+              class="bg-purple-600 rounded-md shadow-md h-12 w-12 p-1 justify-center items-center flex"
+              id="theme-changer"
+            >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-sun-medium"
+                >
+                  <circle cx="12" cy="12" r="4" />
+                  <path d="M12 3v1" />
+                  <path d="M12 20v1" />
+                  <path d="M3 12h1" />
+                  <path d="M20 12h1" />
+                  <path d="m18.364 5.636-.707.707" />
+                  <path d="m6.343 17.657-.707.707" />
+                  <path d="m5.636 5.636.707.707" />
+                  <path d="m17.657 17.657.707.707" />
+                </svg>
             </div>
           </div>
         </div>
